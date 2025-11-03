@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(65, 65, 65);
+            color: white;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .clock {
+            width: 300px;
+            height: 300px;
+            background-color: black;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 30px 2px rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .clock span {
+            position: absolute;
+            transform: rotate(calc(30deg * var(--i)));
+            inset: 10px;
+            text-align: center;
+        }
+
+        .clock span b {
+            transform: rotate(calc(-30deg * var(--i)));
+            display: inline-block;
+        }
+
+        s {
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .hand {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .hand i {
+            position: absolute;
+            width: 2px;
+            background-color: var(--clr);
+            border-radius: 5px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="clock">
+            <div class="hand" id="hours" style="--clr:red;"><i style=" height: 40px;"></i></div>
+            <div class="hand" id="minutes" style="--clr:blue;"><i style=" height: 60px;"></i></div>
+            <div class="hand hello" id="seconds" style="--clr:white;"><i style=" height: 100px;"></i></div>
+            <s></s>
+            <span style="--i:1"><b>1</b></span>
+            <span style="--i:2"><b>2</b></span>
+            <span style="--i:3"><b>3</b></span>
+            <span style="--i:4"><b>4</b></span>
+            <span style="--i:5"><b>5</b></span>
+            <span style="--i:6"><b>6</b></span>
+            <span style="--i:7"><b>7</b></span>
+            <span style="--i:8"><b>8</b></span>
+            <span style="--i:9"><b>9</b></span>
+            <span style="--i:10"><b>10</b></span>
+            <span style="--i:11"><b>11</b></span>
+            <span style="--i:12"><b>12</b></span>
+        </div>
+    </div>
+
+</body>
+<script>
+    let hrs = document.getElementById("hours");
+    let min = document.getElementById("minutes");
+    let sec = document.getElementById("seconds");
+
+
+
+
+
+
+    function displayTime() {
+        let date = new Date();
+        let hh = date.getHours();
+        let mm = date.getMinutes();
+        let ss = date.getSeconds();
+
+
+        let hRotation = 30 * hh + mm / 2;
+        let mRotation = 6 * mm;
+        let sRotation = 6 * ss;
+
+        hrs.style.transform = `rotate(${hRotation}deg)`;
+        min.style.transform = `rotate(${mRotation}deg)`;
+        sec.style.transform = `rotate(${sRotation}deg)`;
+
+
+    }
+
+    setInterval(displayTime, 1000);
+
+    // let speed = 5;
+
+    // let virtualSeconds = 0; // starting at 0 or any initial time
+
+    // function displayTime() {
+    //     // increment virtual time
+    //     virtualSeconds += speed; // add 5 seconds each tick
+
+    //     // convert virtual seconds into hours, minutes, seconds
+    //     let ss = virtualSeconds % 60;
+    //     let totalMinutes = Math.floor(virtualSeconds / 60);
+    //     let mm = totalMinutes % 60;
+    //     let hh = Math.floor(totalMinutes / 60) % 12;
+
+    //     let hRotation = 30 * hh + mm / 2;
+    //     let mRotation = 6 * mm;
+    //     let sRotation = 6 * ss;
+
+    //     hrs.style.transform = `rotate(${hRotation}deg)`;
+    //     min.style.transform = `rotate(${mRotation}deg)`;
+    //     sec.style.transform = `rotate(${sRotation}deg)`;
+    // }
+
+    // setInterval(displayTime, 100);
+
+
+
+</script>
+
+</html>
